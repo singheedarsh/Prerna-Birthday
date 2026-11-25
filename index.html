@@ -799,6 +799,13 @@
           <p class="text-[11px] font-cinzel tracking-[0.2em] text-stone-500 uppercase mt-1">
             Saturday • 9th January 2027 • 6:00 PM
           </p>
+          <button
+            type="button"
+            id="discrete-host-link"
+            class="mt-2 inline-block text-[10px] font-cinzel tracking-[0.22em] text-stone-600 hover:text-amber-300/80 uppercase transition focus:outline-none"
+          >
+            Host
+          </button>
         </footer>
 
       </div>
@@ -1476,15 +1483,64 @@
 
     // Secret trigger: Triple-click or 2-second press on the gold heart divider
     const secretHeart = document.getElementById('secret-host-heart');
+    const discreteHostLink = document.getElementById('discrete-host-link');
     let heartClickCount = 0;
     let heartClickTimer = null;
     let heartHoldTimer = null;
 
-    function triggerHostGate() {
+    function triggerHostGate(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      curtainStage.classList.add('opened');
       if (isHostUnlocked) {
+        hostPinModal.classList.add('hidden');
         hostDashboardModal.classList.remove('hidden');
+        renderGuestDashboard();
         return;
       }
+      hostPinError.classList.add('hidden');
+      hostPinInput.value = '';
+      hostPinModal.classList.remove('hidden');
+      setTimeout(() => {
+        hostPinInput.focus();
+      }, 60);
+    }
+
+    if (discreteHostLink) {
+      discreteHostLink.addEventListener('click', triggerHostGate);
+    }
+
+    // Keyboard shortcut: Ctrl+Shift+H or Cmd+Shift+H
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'h') {
+        triggerHostGate(e);
+      }
+    });
+
+    if (secretHeart) {
+      secretHeart.addEventListener('click', (e) => {
+        e.stopPropagation();
+        heartClickCount++;
+        clearTimeout(heartClickTimer);
+        if (heartClickCount >= 3) {
+          heartClickCount = 0;
+          triggerHostGate(e);
+        } else {
+          heartClickTimer = setTimeout(() => { heartClickCount = 0; }, 900);
+        }
+      });
+
+      secretHeart.addEventListener('pointerdown', (e) => {
+        heartHoldTimer = setTimeout(() => {
+          triggerHostGate(e);
+        }, 1200);
+      });
+      secretHeart.addEventListener('pointerup', () => clearTimeout(heartHoldTimer));
+      secretHeart.addEventListener('pointerleave', () => clearTimeout(heartHoldTimer));
+      secretHeart.addEventListener('pointercancel', () => clearTimeout(heartHoldTimer));
+    }
       hostPinError.classList.add('hidden');
       hostPinInput.value = '';
       hostPinModal.classList.remove('hidden');
