@@ -948,8 +948,6 @@
         </div>
         <p id="webhook-status-text" class="text-[11px] text-emerald-400">Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet &amp; Gmail.</p>
       </div>
-        <p id="webhook-status-text" class="text-[11px] text-emerald-400 hidden"></p>
-      </div>
 
       <!-- Live Guest Table -->
       <div class="rounded-2xl border border-amber-400/25 bg-black/80 overflow-x-auto">
@@ -1351,6 +1349,11 @@
 
       const wishes = guestWishesInput.value.trim();
       const now = new Date();
+      const submittedAtStr = now.toLocaleString('en-IE', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+
       const payload = {
         name,
         phone,
@@ -1358,6 +1361,25 @@
         isAttending,
         adults,
         kids,
+        kidsAges: kidsAges.join(', '),
+        wishes,
+        submittedAt: submittedAtStr,
+        createdAtMs: now.getTime()
+      };
+
+      confirmRsvpBtn.disabled = true;
+      confirmBtnText.textContent = 'Confirming...';
+
+      try {
+        if (db && currentUser) {
+          const rsvpCol = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+          await addDoc(rsvpCol, payload);
+        } else {
+          // Fallback local list if preview runs without Firebase config
+          allRsvps = [{ id: String(Date.now()), ...payload }, ...allRsvps];
+          renderGuestDashboard();
+        }
+
         // Silent background push to 'Prerna Brithday' Google Sheet & Gmail webhook
         const targetWebhookUrl = (webhookUrl && webhookUrl.trim()) || DEFAULT_WEBHOOK_URL;
         const webhookPayload = {
