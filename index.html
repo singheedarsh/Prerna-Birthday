@@ -1541,30 +1541,6 @@
       secretHeart.addEventListener('pointerleave', () => clearTimeout(heartHoldTimer));
       secretHeart.addEventListener('pointercancel', () => clearTimeout(heartHoldTimer));
     }
-      hostPinError.classList.add('hidden');
-      hostPinInput.value = '';
-      hostPinModal.classList.remove('hidden');
-      setTimeout(() => hostPinInput.focus(), 100);
-    }
-
-    secretHeart.addEventListener('click', () => {
-      heartClickCount++;
-      clearTimeout(heartClickTimer);
-      if (heartClickCount >= 3) {
-        heartClickCount = 0;
-        triggerHostGate();
-      } else {
-        heartClickTimer = setTimeout(() => { heartClickCount = 0; }, 700);
-      }
-    });
-
-    secretHeart.addEventListener('pointerdown', () => {
-      heartHoldTimer = setTimeout(() => {
-        triggerHostGate();
-      }, 2000);
-    });
-    secretHeart.addEventListener('pointerup', () => clearTimeout(heartHoldTimer));
-    secretHeart.addEventListener('pointerleave', () => clearTimeout(heartHoldTimer));
 
     // Host Mode Pill click re-opens dashboard
     hostModePill.addEventListener('click', () => {
