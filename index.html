@@ -1127,7 +1127,7 @@
     let auth = null;
     let currentUser = null;
     let allRsvps = [];
-    const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzDuUKg-WJodv5yJavFVgxLw-18nPmsOPjLUssXzNe4Yp-MF6zyTCH1Ydone is that it or do i need to update smth elsesHqfrTKb9yJ/exec';
+    const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzDuUKg-WJodv5yJavFVgxLw-18nPmsOPjLUssXzNe4Yp-MF6zyTCH1YsHqfrTKb9yJ/exec';
     let webhookUrl = DEFAULT_WEBHOOK_URL;
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'prerna-40th-birthday';
 
@@ -1195,8 +1195,9 @@
       onSnapshot(
         settingsDoc,
         (docSnap) => {
-          const savedUrl = (docSnap.exists() && docSnap.data().url && docSnap.data().url.trim())
-            ? docSnap.data().url.trim()
+          const rawSaved = (docSnap.exists() && docSnap.data().url) ? docSnap.data().url.trim() : '';
+          const savedUrl = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(rawSaved)
+            ? rawSaved
             : DEFAULT_WEBHOOK_URL;
           webhookUrl = savedUrl;
           document.getElementById('webhook-url-input').value = webhookUrl;
