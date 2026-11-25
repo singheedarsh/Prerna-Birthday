@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prerna's 40th Birthday — Forty & Fabulous | RSVP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts matching luxury poster typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --gold-light: #fcf6ba;
+      --gold-mid: #d4af37;
+      --gold-dark: #8a6318;
+      --obsidian: #050506;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--obsidian);
+      color: #f5f5f4;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+    .font-script { font-family: 'Great Vibes', cursive; }
+
+    /* Metallic Gold Foil Text Gradient */
+    .gold-foil-text {
+      background: linear-gradient(
+        135deg,
+        #bf953f 0%,
+        #fcf6ba 22%,
+        #b38728 45%,
+        #fbf5b7 70%,
+        #aa771c 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: goldShimmer 6s linear infinite;
+    }
+
+    @keyframes goldShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* Metallic Gold Frame & Glow */
+    .gold-border-glow {
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.14), inset 0 0 20px rgba(212, 175, 55, 0.08);
+    }
+
+    .gold-btn {
+      background: linear-gradient(135deg, #b38728 0%, #fcf6ba 48%, #aa771c 100%);
+      color: #09090b;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 22px rgba(212, 175, 55, 0.35);
+    }
+
+    .gold-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(252, 246, 186, 0.45);
+      filter: brightness(1.06);
+    }
+
+    .gold-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .gold-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    /* Ornate Gold Portrait Medallion */
+    .portrait-medallion {
+      position: relative;
+      padding: 5px;
+      border-radius: 9999px;
+      background: conic-gradient(from 45deg, #8a6318, #fcf6ba, #d4af37, #fcf6ba, #8a6318);
+      box-shadow:
+        0 0 35px rgba(212, 175, 55, 0.38),
+        0 10px 28px rgba(0, 0, 0, 0.85);
+    }
+
+    .portrait-medallion::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: 9999px;
+      border: 1px dashed rgba(252, 246, 186, 0.45);
+      animation: slowSpin 38s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes slowSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* =========================================
+       THEATRICAL VELVET CURTAINS OVERLAY
+       ========================================= */
+    #curtain-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      overflow: hidden;
+      pointer-events: auto;
+      transition: opacity 0.9s ease 1.35s, visibility 0.9s ease 1.35s;
+    }
+
+    #curtain-stage.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .curtain-valance {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 54px;
+      z-index: 105;
+      background: repeating-linear-gradient(
+        90deg,
+        #070709 0px,
+        #16161b 24px,
+        #050507 48px
+      );
+      border-bottom: 3px solid #d4af37;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 3px 15px rgba(212, 175, 55, 0.35);
+      transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    #curtain-stage.opened .curtain-valance {
+      transform: translateY(-110%);
+    }
+
+    .curtain-panel {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(212, 175, 55, 0.13), transparent 65%),
+        repeating-linear-gradient(
+          90deg,
+          #050506 0%,
+          #141418 4%,
+          #070709 8%,
+          #1b1b22 12%,
+          #060608 16%
+        );
+      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.95);
+      transition: transform 1.65s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    .curtain-left {
+      transform-origin: left center;
+      border-right: 3px solid #d4af37;
+      box-shadow: 10px 0 35px rgba(0, 0, 0, 0.95);
+    }
+
+    .curtain-right {
+      transform-origin: right center;
+      border-left: 3px solid #d4af37;
+      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.95);
+    }
+
+    .curtain-left::after,
+    .curtain-right::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background: repeating-linear-gradient(
+        180deg,
+        #fcf6ba 0px,
+        #d4af37 6px,
+        #8a6318 12px
+      );
+      opacity: 0.9;
+    }
+
+    .curtain-left::after { right: 0; }
+    .curtain-right::after { left: 0; }
+
+    #curtain-stage.opened .curtain-left {
+      transform: translateX(-102%) skewY(-2deg);
+    }
+
+    #curtain-stage.opened .curtain-right {
+      transform: translateX(102%) skewY(2deg);
+    }
+
+    #seal-container {
+      position: absolute;
+      inset: 0;
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.86) 100%);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #curtain-stage.opened #seal-container {
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+    }
+
+    .wax-seal-btn {
+      position: relative;
+      width: 162px;
+      height: 162px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 30%, #fcf6ba, #d4af37 45%, #8a6318 85%, #4d3508 100%);
+      box-shadow:
+        0 0 0 6px rgba(212, 175, 55, 0.25),
+        0 0 45px rgba(212, 175, 55, 0.55),
+        inset 0 4px 12px rgba(255, 255, 255, 0.7),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: pulseSeal 2.6s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .wax-seal-btn:hover {
+      transform: scale(1.06);
+    }
+
+    @keyframes pulseSeal {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.22), 0 0 35px rgba(212, 175, 55, 0.5); }
+      50% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0.08), 0 0 60px rgba(252, 246, 186, 0.8); }
+    }
+
+    /* Floating Balloons */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-9px) rotate(-2.5deg); }
+    }
+
+    .animate-float-1 { animation: floatSlow 5.5s ease-in-out infinite; }
+    .animate-float-2 { animation: floatReverse 6.4s ease-in-out infinite; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #070707; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #b38728, #fcf6ba, #8a6318);
+      border-radius: 4px;
+    }
+
+    /* Form Inputs */
+    .luxury-input {
+      background: rgba(15, 15, 19, 0.92);
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      color: #f5f5f4;
+      transition: all 0.25s ease;
+    }
+
+    .luxury-input:focus {
+      outline: none;
+      border-color: #fcf6ba;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+    }
+  </style>
+</head>
+<body class="relative selection:bg-amber-400 selection:text-black">
+
+  <!-- Ambient Gold Glitter Canvas -->
+  <canvas id="glitter-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- =========================================================
+       OPENING THEATRICAL CURTAINS
+       ========================================================= -->
+  <div id="curtain-stage" role="dialog" aria-label="Invitation Curtain Cover">
+    <div class="curtain-valance"></div>
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
+
+    <div id="seal-container">
+      <p class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-amber-200/90 uppercase mb-6 drop-shadow">
+        You Are Cordially Invited
+      </p>
+
+      <button id="open-curtain-btn" type="button" class="wax-seal-btn group focus:outline-none" aria-label="Open Invitation">
+        <div class="w-[140px] h-[140px] rounded-full border border-amber-900/50 flex flex-col items-center justify-center px-2">
+          <span class="font-script text-3xl text-zinc-950 leading-none mb-0.5">Prerna's</span>
+          <span class="font-cinzel text-xs font-extrabold tracking-[0.2em] text-zinc-950 uppercase">40th</span>
+          <div class="w-10 h-[1px] bg-zinc-900/50 my-1.5"></div>
+          <span class="font-cinzel text-[10px] font-bold tracking-[0.18em] text-zinc-950 uppercase group-hover:scale-105 transition-transform">
+            Tap to Open
+          </span>
+        </div>
+      </button>
+
+      <p class="font-cormorant italic text-lg sm:text-xl text-amber-100/80 mt-7">
+        Forty &amp; Fabulous • 9th January 2027
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MAIN INVITATION & RSVP CARD CONTAINER
+       ========================================================= -->
+  <main class="relative z-10 max-w-2xl mx-auto px-4 py-8 sm:py-12">
+
+    <!-- Top Utility Bar (Replay Curtains only for public guests) -->
+    <div class="flex items-center justify-between mb-3">
+      <span id="host-mode-pill" class="hidden text-[11px] font-cinzel tracking-widest text-emerald-300 bg-emerald-950/70 border border-emerald-400/40 px-3 py-1 rounded-full">
+        <i class="fa-solid fa-crown mr-1 text-amber-300"></i> Host Mode Active
+      </span>
+      <div class="ml-auto">
+        <button id="replay-curtain-btn" type="button" class="text-xs font-cinzel tracking-widest text-amber-300/80 hover:text-amber-200 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/25 bg-black/60 backdrop-blur-sm transition">
+          <i class="fa-solid fa-masks-theater text-amber-400"></i>
+          <span>Replay Curtains</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Outer Double-Gold Frame matching the Poster -->
+    <div class="relative rounded-3xl bg-gradient-to-b from-[#0b0b0e]/95 via-[#070709]/98 to-[#0b0b0e]/95 p-2 sm:p-3 gold-border-glow shadow-2xl overflow-hidden">
+      <div class="relative rounded-2xl border border-amber-400/45 px-5 py-8 sm:px-10 sm:py-11 overflow-hidden">
+
+        <!-- Decorative Royal Blue & Gold Rose Floral Cluster (Top Right - Poster Motif) -->
+        <svg class="absolute -top-6 -right-6 w-40 h-40 sm:w-52 sm:h-52 pointer-events-none opacity-90" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="royalRose1" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="45%" stop-color="#1d4ed8"/>
+              <stop offset="85%" stop-color="#1e3a8a"/>
+              <stop offset="100%" stop-color="#0f172a"/>
+            </radialGradient>
+            <linearGradient id="goldLeaf" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fcf6ba"/>
+              <stop offset="50%" stop-color="#d4af37"/>
+              <stop offset="100%" stop-color="#8a6318"/>
+            </linearGradient>
+          </defs>
+          <path d="M115 45 C90 35, 75 50, 95 62 Z" fill="url(#goldLeaf)" opacity="0.85"/>
+          <path d="M105 75 C75 72, 68 92, 92 96 Z" fill="url(#goldLeaf)" opacity="0.8"/>
+          <path d="M145 110 C135 138, 155 148, 162 125 Z" fill="url(#goldLeaf)" opacity="0.85"/>
+          <path d="M172 95 C168 122, 188 128, 190 105 Z" fill="url(#goldLeaf)" opacity="0.75"/>
+          <circle cx="152" cy="54" r="36" fill="url(#royalRose1)"/>
+          <path d="M132 45 C142 28, 168 30, 172 50 C175 68, 152 78, 136 65 C126 56, 134 38, 152 40 C162 41, 164 56, 152 59" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" opacity="0.75"/>
+          <circle cx="115" cy="24" r="20" fill="url(#royalRose1)"/>
+          <path d="M105 20 C112 10, 126 14, 125 25 C124 34, 110 35, 107 26" stroke="#93c5fd" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="178" cy="92" r="18" fill="url(#royalRose1)"/>
+        </svg>
+
+        <!-- Decorative Royal Blue & Gold Floral Accent (Bottom Left - Poster Motif) -->
+        <svg class="absolute -bottom-8 -left-8 w-36 h-36 sm:w-44 sm:h-44 pointer-events-none opacity-80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M75 140 C95 125, 112 140, 92 155 Z" fill="url(#goldLeaf)" opacity="0.8"/>
+          <path d="M45 110 C55 85, 75 92, 65 115 Z" fill="url(#goldLeaf)" opacity="0.75"/>
+          <circle cx="48" cy="154" r="32" fill="url(#royalRose1)"/>
+          <path d="M32 148 C42 134, 62 136, 65 152 C67 166, 48 174, 36 163" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="84" cy="175" r="20" fill="url(#royalRose1)"/>
+        </svg>
+
+        <!-- Floating Gold & Royal Blue Balloons (Right Edge Accent matching Poster) -->
+        <div class="hidden sm:block absolute right-3 top-56 pointer-events-none z-0 opacity-85">
+          <svg class="w-16 h-24 animate-float-1" viewBox="0 0 80 120" fill="none">
+            <defs>
+              <radialGradient id="goldBalloon" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="45%" stop-color="#ca8a04"/>
+                <stop offset="100%" stop-color="#422006"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="40" cy="42" rx="28" ry="34" fill="url(#goldBalloon)"/>
+            <polygon points="36,76 44,76 40,82" fill="#ca8a04"/>
+            <path d="M40 82 Q46 98 37 116" stroke="#d4af37" stroke-width="1.3" fill="none"/>
+          </svg>
+          <svg class="w-14 h-20 -mt-5 ml-4 animate-float-2" viewBox="0 0 80 120" fill="none">
+            <defs>
+              <radialGradient id="blueBalloon" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#60a5fa"/>
+                <stop offset="50%" stop-color="#1d4ed8"/>
+                <stop offset="100%" stop-color="#090d16"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="40" cy="42" rx="26" ry="32" fill="url(#blueBalloon)"/>
+            <polygon points="36,74 44,74 40,80" fill="#1d4ed8"/>
+            <path d="M40 80 Q34 96 42 115" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+
+        <!-- =====================================================
+             HEADER WITH PRERNA'S PORTRAIT MEDALLION & POSTER TYPE
+             ===================================================== -->
+        <header class="relative z-10 text-center">
+          <p class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-stone-200 uppercase">
+            You're Invited To
+          </p>
+
+          <!-- Divider with Gold Heart -->
+          <div class="flex items-center justify-center gap-3 my-3">
+            <span class="h-[1px] w-14 sm:w-20 bg-gradient-to-r from-transparent to-amber-400"></span>
+            <i class="fa-solid fa-heart text-amber-400 text-xs"></i>
+            <span class="h-[1px] w-14 sm:w-20 bg-gradient-to-l from-transparent to-amber-400"></span>
+          </div>
+
+          <!-- Hero Layout: Ornate Gold Portrait Medallion + Headline -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-7 my-4">
+            <!-- Best Glamorous Portrait of Prerna (Burgundy dress & gold drop earrings) -->
+            <div class="portrait-medallion shrink-0">
+              <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden bg-zinc-900 border-2 border-zinc-950 relative">
+                <img
+                  src="WhatsApp Image 2026-11-25 at 5.07.48 PM (3).jpeg"
+                  alt="Prerna — Celebrating 40 Years"
+                  onerror="this.onerror=null;this.src='https://placehold.co/300x300/18181b/f5d061?text=Prerna+40';"
+                  class="w-full h-full object-cover object-top scale-105"
+                />
+                <div class="absolute inset-0 rounded-full ring-1 ring-inset ring-amber-200/30 pointer-events-none"></div>
+              </div>
+            </div>
+
+            <!-- Title Block -->
+            <div class="text-center sm:text-left">
+              <h1 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wider gold-foil-text uppercase leading-tight">
+                Prerna's 40<sup class="text-lg sm:text-2xl ml-0.5">th</sup>
+              </h1>
+
+              <span class="font-script text-6xl sm:text-7xl gold-foil-text block leading-none py-0.5 drop-shadow-[0_4px_16px_rgba(212,175,55,0.28)]">
+                Birthday
+              </span>
+
+              <p class="font-cinzel text-sm sm:text-lg font-bold tracking-[0.22em] text-white uppercase mt-1">
+                Forty &amp; Fabulous
+              </p>
+            </div>
+          </div>
+
+          <!-- Discreet Secret Host Trigger Heart (Triple-click or 2s press to unlock Host Dashboard) -->
+          <div class="flex items-center justify-center gap-3 my-4">
+            <span class="h-[1px] w-20 sm:w-28 bg-gradient-to-r from-transparent via-amber-400/70 to-amber-400"></span>
+            <button
+              type="button"
+              id="secret-host-heart"
+              aria-label="Decorative Divider"
+              class="text-amber-400 hover:text-amber-200 transition p-1 cursor-default focus:outline-none select-none"
+            >
+              <i class="fa-solid fa-heart text-xs"></i>
+            </button>
+            <span class="h-[1px] w-20 sm:w-28 bg-gradient-to-l from-transparent via-amber-400/70 to-amber-400"></span>
+          </div>
+
+          <!-- Dress Code Line -->
+          <p class="font-cormorant italic text-xl sm:text-2xl text-amber-200/95 tracking-wide">
+            Ladies &amp; Gentlemen, dress to dazzle!
+          </p>
+        </header>
+
+        <!-- =====================================================
+             DATE, TIME, LIVE COUNTDOWN & ADD TO CALENDAR
+             ===================================================== -->
+        <section class="relative z-10 mt-6 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-5 sm:gap-0 py-4 px-2 rounded-2xl bg-white/[0.02] border border-amber-400/25">
+            <!-- Date Column -->
+            <div class="flex flex-col items-center text-center sm:border-r sm:border-amber-400/40 px-4">
+              <div class="w-10 h-10 rounded-xl border border-amber-400/50 bg-amber-500/10 flex items-center justify-center mb-2 text-amber-300">
+                <i class="fa-regular fa-calendar-check text-lg"></i>
+              </div>
+              <span class="font-cinzel text-xs tracking-[0.22em] text-amber-300 uppercase">Saturday</span>
+              <span class="font-cinzel text-2xl sm:text-3xl font-bold text-white my-0.5">
+                9<sup class="text-xs ml-0.5">TH</sup>
+              </span>
+              <span class="font-cinzel text-sm sm:text-base tracking-[0.16em] text-stone-200 uppercase">
+                January 2027
+              </span>
+            </div>
+
+            <!-- Time Column -->
+            <div class="flex flex-col items-center text-center px-4">
+              <div class="w-10 h-10 rounded-xl border border-amber-400/50 bg-amber-500/10 flex items-center justify-center mb-2 text-amber-300">
+                <i class="fa-regular fa-clock text-lg"></i>
+              </div>
+              <span class="font-cinzel text-xs tracking-[0.22em] text-amber-300 uppercase">Evening</span>
+              <span class="font-cinzel text-2xl sm:text-3xl font-bold text-white my-0.5">
+                6:00 PM
+              </span>
+              <span class="font-cinzel text-sm sm:text-base tracking-[0.16em] text-stone-200 uppercase">
+                Onwards
+              </span>
+            </div>
+          </div>
+
+          <!-- Live Countdown to 9 Jan 2027 18:00 -->
+          <div class="mt-4 grid grid-cols-4 gap-2 sm:gap-3 max-w-md mx-auto">
+            <div class="rounded-xl border border-amber-400/30 bg-zinc-950/80 py-2.5 px-1 text-center">
+              <span id="cd-days" class="font-cinzel text-lg sm:text-2xl font-bold text-amber-200 block leading-none">--</span>
+              <span class="text-[10px] font-cinzel tracking-widest text-stone-400 uppercase mt-1 block">Days</span>
+            </div>
+            <div class="rounded-xl border border-amber-400/30 bg-zinc-950/80 py-2.5 px-1 text-center">
+              <span id="cd-hours" class="font-cinzel text-lg sm:text-2xl font-bold text-amber-200 block leading-none">--</span>
+              <span class="text-[10px] font-cinzel tracking-widest text-stone-400 uppercase mt-1 block">Hours</span>
+            </div>
+            <div class="rounded-xl border border-amber-400/30 bg-zinc-950/80 py-2.5 px-1 text-center">
+              <span id="cd-mins" class="font-cinzel text-lg sm:text-2xl font-bold text-amber-200 block leading-none">--</span>
+              <span class="text-[10px] font-cinzel tracking-widest text-stone-400 uppercase mt-1 block">Mins</span>
+            </div>
+            <div class="rounded-xl border border-amber-400/30 bg-zinc-950/80 py-2.5 px-1 text-center">
+              <span id="cd-secs" class="font-cinzel text-lg sm:text-2xl font-bold text-amber-200 block leading-none">--</span>
+              <span class="text-[10px] font-cinzel tracking-widest text-stone-400 uppercase mt-1 block">Secs</span>
+            </div>
+          </div>
+
+          <!-- Save The Date / Venue Box + Save to Calendar Actions -->
+          <div class="mt-5 mx-auto max-w-md rounded-2xl border border-amber-400/75 bg-gradient-to-r from-amber-500/5 via-amber-400/10 to-amber-500/5 px-5 py-4 text-center shadow-[0_0_25px_rgba(212,175,55,0.12)]">
+            <p class="font-cinzel text-base sm:text-lg font-bold tracking-[0.2em] text-amber-200 uppercase">
+              Save The Date
+            </p>
+            <p class="font-cormorant italic text-lg sm:text-xl text-stone-200 mt-0.5">
+              Venue details to follow
+            </p>
+
+            <!-- Calendar Quick Buttons -->
+            <div class="mt-3 pt-3 border-t border-amber-400/20 flex flex-wrap items-center justify-center gap-2">
+              <a
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prerna%27s+40th+Birthday+%E2%80%94+Forty+%26+Fabulous&dates=20270109T180000/20270109T235900&details=Ladies+%26+Gentlemen%2C+dress+to+dazzle%21+Venue+details+to+follow.&location=Venue+details+to+follow"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[11px] font-cinzel tracking-wider text-amber-200 hover:text-black hover:bg-amber-300 border border-amber-400/45 rounded-lg px-3 py-1.5 transition flex items-center gap-1.5"
+              >
+                <i class="fa-brands fa-google"></i>
+                <span>Google Calendar</span>
+              </a>
+              <button
+                type="button"
+                class="download-ics-btn text-[11px] font-cinzel tracking-wider text-amber-200 hover:text-black hover:bg-amber-300 border border-amber-400/45 rounded-lg px-3 py-1.5 transition flex items-center gap-1.5"
+              >
+                <i class="fa-regular fa-calendar-plus"></i>
+                <span>Apple / Outlook (.ics)</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             INTERACTIVE RSVP SECTION
+             ===================================================== -->
+        <section id="rsvp-section" class="relative z-10 mt-7 pt-6 border-t border-amber-400/30">
+          <div class="text-center mb-6">
+            <span class="inline-block px-3.5 py-1 rounded-full text-[11px] font-cinzel tracking-[0.25em] uppercase bg-amber-400/10 text-amber-300 border border-amber-400/30 mb-2">
+              Kindly Respond
+            </span>
+            <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-foil-text uppercase tracking-wider">
+              R.S.V.P
+            </h2>
+            <p class="text-xs sm:text-sm text-stone-400 mt-1">
+              Submit your details below so we can send you the venue location
+            </p>
+          </div>
+
+          <!-- Inline Validation / Status Banner -->
+          <div id="status-banner" class="hidden mb-5 rounded-xl px-4 py-3 text-sm border transition-all"></div>
+
+          <!-- ===================================================
+               RSVP FORM
+               =================================================== -->
+          <form id="rsvp-form" class="space-y-5" novalidate>
+            <!-- 1. Guest Full Name -->
+            <div>
+              <label for="guest-name" class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
+                Your Full Name <span class="text-amber-400">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-amber-400/70">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input
+                  type="text"
+                  id="guest-name"
+                  required
+                  placeholder="e.g., Rohan & Priya Sharma"
+                  class="luxury-input w-full rounded-xl pl-10 pr-4 py-3 text-sm sm:text-base placeholder-stone-500"
+                />
+              </div>
+            </div>
+
+            <!-- 2. Phone Number (WhatsApp / Mobile) -->
+            <div>
+              <label for="guest-phone" class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
+                WhatsApp / Mobile Number <span class="text-amber-400">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-amber-400/70">
+                  <i class="fa-solid fa-phone"></i>
+                </span>
+                <input
+                  type="tel"
+                  id="guest-phone"
+                  required
+                  placeholder="e.g., +353 89 123 4567"
+                  class="luxury-input w-full rounded-xl pl-10 pr-4 py-3 text-sm sm:text-base placeholder-stone-500"
+                />
+              </div>
+              <p class="text-[11px] text-stone-400 mt-1.5">
+                Include country code (e.g. +353) so we can share venue details with you
+              </p>
+            </div>
+
+            <!-- 3. Attendance Selection -->
+            <div>
+              <label class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
+                Will You Be Joining Us? <span class="text-amber-400">*</span>
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="attendance" value="Joyfully Accepts" class="peer sr-only" checked />
+                  <div class="rounded-xl border border-amber-400/35 bg-zinc-950/80 px-4 py-3.5 flex items-center justify-center gap-2.5 text-sm font-medium text-stone-300 transition peer-checked:border-amber-300 peer-checked:bg-amber-400/15 peer-checked:text-amber-200 peer-checked:shadow-[0_0_18px_rgba(212,175,55,0.2)]">
+                    <i class="fa-solid fa-champagne-glasses text-amber-400"></i>
+                    <span>Joyfully Accepts</span>
+                  </div>
+                </label>
+
+                <label class="cursor-pointer">
+                  <input type="radio" name="attendance" value="Regretfully Declines" class="peer sr-only" />
+                  <div class="rounded-xl border border-amber-400/35 bg-zinc-950/80 px-4 py-3.5 flex items-center justify-center gap-2.5 text-sm font-medium text-stone-300 transition peer-checked:border-rose-400/70 peer-checked:bg-rose-950/30 peer-checked:text-rose-200">
+                    <i class="fa-regular fa-heart text-stone-400"></i>
+                    <span>Regretfully Declines</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- 4. Guest Count & Kids Breakdown -->
+            <div id="guest-details-wrapper" class="space-y-5 transition-all duration-300">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Number of Adults -->
+                <div class="rounded-2xl border border-amber-400/30 bg-zinc-950/70 p-4">
+                  <label for="num-adults" class="block font-cinzel text-xs tracking-[0.15em] text-amber-200 uppercase mb-1">
+                    Number of Adults
+                  </label>
+                  <p class="text-[11px] text-stone-400 mb-3">Including yourself</p>
+                  <div class="flex items-center justify-between gap-2">
+                    <button type="button" data-target="num-adults" data-action="dec" class="stepper-btn w-10 h-10 rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 flex items-center justify-center transition">
+                      <i class="fa-solid fa-minus text-xs"></i>
+                    </button>
+                    <input
+                      type="number"
+                      id="num-adults"
+                      min="1"
+                      max="20"
+                      value="1"
+                      class="luxury-input w-20 text-center rounded-xl py-2 font-cinzel text-lg font-bold text-amber-100"
+                    />
+                    <button type="button" data-target="num-adults" data-action="inc" class="stepper-btn w-10 h-10 rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 flex items-center justify-center transition">
+                      <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Number of Kids -->
+                <div class="rounded-2xl border border-amber-400/30 bg-zinc-950/70 p-4">
+                  <label for="num-kids" class="block font-cinzel text-xs tracking-[0.15em] text-amber-200 uppercase mb-1">
+                    Number of Kids
+                  </label>
+                  <p class="text-[11px] text-stone-400 mb-3">Children attending</p>
+                  <div class="flex items-center justify-between gap-2">
+                    <button type="button" data-target="num-kids" data-action="dec" class="stepper-btn w-10 h-10 rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 flex items-center justify-center transition">
+                      <i class="fa-solid fa-minus text-xs"></i>
+                    </button>
+                    <input
+                      type="number"
+                      id="num-kids"
+                      min="0"
+                      max="15"
+                      value="0"
+                      class="luxury-input w-20 text-center rounded-xl py-2 font-cinzel text-lg font-bold text-amber-100"
+                    />
+                    <button type="button" data-target="num-kids" data-action="inc" class="stepper-btn w-10 h-10 rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 flex items-center justify-center transition">
+                      <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dynamic Age(s) of Kids Field -->
+              <div id="kids-ages-container" class="hidden rounded-2xl border border-amber-400/45 bg-amber-400/[0.06] p-4 transition-all">
+                <div class="flex items-center justify-between mb-2">
+                  <label class="font-cinzel text-xs tracking-[0.15em] text-amber-200 uppercase">
+                    Age(s) of Kids <span class="text-amber-400">*</span>
+                  </label>
+                  <span class="text-[11px] text-amber-300/80">Helps us plan kid-friendly treats</span>
+                </div>
+                <div id="kids-age-inputs" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-2"></div>
+              </div>
+            </div>
+
+            <!-- 5. Dietary Requirements / Song Request / Personal Note -->
+            <div>
+              <label for="guest-wishes" class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
+                Dietary Notes, Song Request or Wishes <span class="text-stone-500 font-sans normal-case tracking-normal">(Optional)</span>
+              </label>
+              <textarea
+                id="guest-wishes"
+                rows="2"
+                placeholder="Any dietary requirements, favorite dance track, or birthday wishes for Prerna..."
+                class="luxury-input w-full rounded-xl px-4 py-3 text-sm placeholder-stone-500 resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Single Gold Confirm Button -->
+            <div class="pt-2">
+              <button
+                type="submit"
+                id="confirm-rsvp-btn"
+                class="gold-btn w-full rounded-2xl py-4 px-6 font-cinzel text-sm sm:text-base tracking-[0.2em] uppercase flex items-center justify-center gap-2.5 cursor-pointer"
+              >
+                <i class="fa-solid fa-sparkles"></i>
+                <span id="confirm-btn-text">Confirm RSVP</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- ===================================================
+               VIP CONFIRMATION PASS (Shown after submission)
+               =================================================== -->
+          <div id="rsvp-confirmation-card" class="hidden rounded-2xl border border-amber-400/65 bg-gradient-to-b from-amber-400/10 via-zinc-950/95 to-black p-6 text-center space-y-4 shadow-[0_0_30px_rgba(212,175,55,0.18)]">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-200 text-[11px] font-cinzel tracking-[0.22em] uppercase">
+              <i class="fa-solid fa-crown text-amber-300"></i>
+              <span>VIP Guest Pass Confirmed</span>
+            </div>
+
+            <div class="w-14 h-14 mx-auto rounded-full bg-emerald-500/15 border border-emerald-400/50 flex items-center justify-center text-emerald-300 text-2xl">
+              <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold gold-foil-text uppercase tracking-wider">
+              Thank You, <span id="conf-guest-name">Guest</span>!
+            </h3>
+
+            <p id="conf-subtitle" class="text-sm text-stone-300 max-w-md mx-auto">
+              Your RSVP has been recorded. We'll text/WhatsApp you the venue details closer to the celebration!
+            </p>
+
+            <div id="conf-summary-box" class="rounded-xl border border-amber-400/30 bg-black/75 p-4 text-left text-xs sm:text-sm text-stone-200 space-y-1.5 max-w-md mx-auto">
+              <!-- Populated dynamically -->
+            </div>
+
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                class="download-ics-btn gold-btn rounded-xl px-4 py-2.5 text-xs font-cinzel tracking-wider uppercase flex items-center gap-1.5"
+              >
+                <i class="fa-regular fa-calendar-plus"></i>
+                <span>Save to Calendar</span>
+              </button>
+
+              <button
+                type="button"
+                id="edit-rsvp-btn"
+                class="rounded-xl border border-amber-400/50 bg-amber-400/10 hover:bg-amber-400/20 text-amber-200 font-cinzel text-xs tracking-wider uppercase px-4 py-2.5 transition"
+              >
+                Edit My Response
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Clean Public Footer (No public guest list link!) -->
+        <footer class="relative z-10 mt-8 pt-5 border-t border-amber-400/20 text-center">
+          <p class="font-cormorant italic text-base text-amber-200/85">
+            Celebrating Forty &amp; Fabulous Years of Prerna
+          </p>
+          <p class="text-[11px] font-cinzel tracking-[0.2em] text-stone-500 uppercase mt-1">
+            Saturday • 9th January 2027 • 6:00 PM
+          </p>
+        </footer>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       PRIVATE HOST PIN MODAL (Only triggered via secret heart)
+       ========================================================= -->
+  <div id="host-pin-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="max-w-sm w-full rounded-2xl border border-amber-400/60 bg-[#0b0b0e] p-6 shadow-2xl text-center space-y-4">
+      <div class="w-12 h-12 mx-auto rounded-full bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-300">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h3 class="font-cinzel text-lg font-bold gold-foil-text uppercase tracking-wider">
+        Host Access Only
+      </h3>
+      <p class="text-xs text-stone-400">
+        Enter the Host PIN to view the private RSVP guest list &amp; Google Sheets sync.
+      </p>
+      <input
+        type="password"
+        id="host-pin-input"
+        inputmode="numeric"
+        maxlength="8"
+        placeholder="Enter Host PIN"
+        class="luxury-input w-full rounded-xl px-4 py-3 text-center font-cinzel tracking-[0.3em] text-lg"
+      />
+      <p id="host-pin-error" class="hidden text-xs text-rose-400">Incorrect PIN. Try again.</p>
+      <div class="flex gap-2.5 pt-1">
+        <button type="button" id="cancel-pin-btn" class="flex-1 rounded-xl border border-stone-700 py-2.5 text-xs font-cinzel uppercase text-stone-300 hover:bg-zinc-900">
+          Cancel
+        </button>
+        <button type="button" id="submit-pin-btn" class="flex-1 gold-btn rounded-xl py-2.5 text-xs font-cinzel uppercase">
+          Unlock
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PRIVATE HOST-ONLY DASHBOARD MODAL
+       (Completely invisible to normal guests!)
+       ========================================================= -->
+  <div id="host-dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="max-w-4xl w-full rounded-3xl border border-amber-400/60 bg-[#0a0a0d] p-5 sm:p-7 shadow-2xl my-auto max-h-[92vh] overflow-y-auto space-y-6">
+
+      <!-- Modal Header -->
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-amber-400/25 pb-4">
+        <div>
+          <span class="text-[10px] font-cinzel tracking-[0.25em] text-amber-400 uppercase block">Private Host Console</span>
+          <h3 class="font-cinzel text-xl sm:text-2xl font-bold gold-foil-text uppercase">
+            Prerna's 40th — RSVP Guest List
+          </h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="copy-guest-link-btn"
+            class="rounded-xl border border-emerald-400/45 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-200 px-3 py-2 text-xs font-medium flex items-center gap-1.5 transition"
+          >
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Copy Clean Guest Link</span>
+          </button>
+          <button
+            type="button"
+            id="close-host-dashboard-btn"
+            class="w-9 h-9 rounded-full border border-amber-400/40 text-amber-200 hover:bg-amber-400/20 flex items-center justify-center transition"
+            aria-label="Close Host Dashboard"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- How to Share with Guests Note -->
+      <div class="rounded-xl border border-amber-400/25 bg-amber-400/[0.05] px-4 py-3 text-xs text-stone-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <strong class="text-amber-200">Sharing Tip:</strong> Send the clean site link without <code class="text-amber-300">?host=prerna40</code> to guests—they will only see the invitation &amp; RSVP form.
+        </div>
+        <span class="text-[11px] text-stone-400 shrink-0">Host PIN: <strong class="text-amber-200">1987</strong></span>
+      </div>
+
+      <!-- Summary Counters -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="rounded-2xl border border-amber-400/25 bg-zinc-950 p-3.5 text-center">
+          <span id="stat-responses" class="font-cinzel text-2xl font-bold text-amber-200 block">0</span>
+          <span class="text-[11px] text-stone-400 uppercase tracking-wider">Responses</span>
+        </div>
+        <div class="rounded-2xl border border-emerald-400/25 bg-zinc-950 p-3.5 text-center">
+          <span id="stat-attending" class="font-cinzel text-2xl font-bold text-emerald-300 block">0</span>
+          <span class="text-[11px] text-stone-400 uppercase tracking-wider">Attending</span>
+        </div>
+        <div class="rounded-2xl border border-amber-400/25 bg-zinc-950 p-3.5 text-center">
+          <span id="stat-adults" class="font-cinzel text-2xl font-bold text-white block">0</span>
+          <span class="text-[11px] text-stone-400 uppercase tracking-wider">Total Adults</span>
+        </div>
+        <div class="rounded-2xl border border-blue-400/25 bg-zinc-950 p-3.5 text-center">
+          <span id="stat-kids" class="font-cinzel text-2xl font-bold text-blue-300 block">0</span>
+          <span class="text-[11px] text-stone-400 uppercase tracking-wider">Total Kids</span>
+        </div>
+      </div>
+
+      <!-- Export & Google Sheets ('Prerna Brithday') Sync Controls -->
+      <div class="flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex flex-wrap gap-2">
+          <button type="button" id="copy-sheets-btn" class="gold-btn rounded-xl px-4 py-2 text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-table"></i>
+            <span>Copy Rows for 'Prerna Brithday' Sheet</span>
+          </button>
+          <button type="button" id="download-csv-btn" class="rounded-xl border border-amber-400/45 bg-amber-400/10 hover:bg-amber-400/20 text-amber-200 px-4 py-2 text-xs font-medium flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-file-csv"></i>
+            <span>Download CSV</span>
+          </button>
+        </div>
+
+        <button type="button" id="toggle-webhook-setup-btn" class="text-xs text-amber-300 hover:text-amber-100 underline underline-offset-4 flex items-center gap-1">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Auto-Sync to 'Prerna Brithday' Sheet &amp; Gmail</span>
+        </button>
+      </div>
+
+      <!-- Collapsible Google Sheets ('Prerna Brithday') & Gmail Auto-Sync Setup -->
+      <div id="webhook-setup-panel" class="hidden rounded-2xl border border-amber-400/35 bg-zinc-950/95 p-4 space-y-3 text-xs text-stone-300">
+        <div class="flex items-center justify-between">
+          <p class="font-cinzel text-amber-200 uppercase tracking-wider font-semibold">
+            Automatic Sync to 'Prerna Brithday' Sheet &amp; Gmail
+          </p>
+          <button type="button" id="copy-apps-script-btn" class="rounded-lg border border-amber-400/45 bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 px-3 py-1 text-[11px] font-medium transition">
+            <i class="fa-regular fa-copy mr-1"></i> Copy Google Apps Script
+          </button>
+        </div>
+        <p class="text-stone-400 leading-relaxed">
+          Open your <strong class="text-amber-200">'Prerna Brithday'</strong> Google Sheet &rarr; <strong class="text-stone-200">Extensions &rarr; Apps Script</strong>, paste the copied script, click <strong class="text-stone-200">Deploy &rarr; New deployment &rarr; Web app</strong> (Execute as: <em>Me</em>, Access: <em>Anyone</em>), and paste the Web App URL below. Every RSVP will automatically add a row to <strong class="text-amber-200">Prerna Brithday</strong> and email <strong class="text-amber-200">singhee.shobhit@gmail.com</strong> &amp; <strong class="text-amber-200">singhee.darsh@gmail.com</strong>:
+        </p>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input
+            type="url"
+            id="webhook-url-input"
+            placeholder="https://script.google.com/macros/s/...../exec"
+            class="luxury-input flex-1 rounded-xl px-3.5 py-2.5 text-xs"
+          />
+          <button type="button" id="save-webhook-btn" class="gold-btn rounded-xl px-5 py-2.5 text-xs uppercase font-cinzel">
+            Save Auto-Sync
+          </button>
+        </div>
+        <p id="webhook-status-text" class="text-[11px] text-emerald-400 hidden"></p>
+      </div>
+
+      <!-- Live Guest Table -->
+      <div class="rounded-2xl border border-amber-400/25 bg-black/80 overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-amber-400/30 font-cinzel text-[11px] uppercase tracking-wider text-amber-300 bg-amber-400/[0.06]">
+              <th class="py-3 px-3.5">Guest Name</th>
+              <th class="py-3 px-3.5">Phone / WhatsApp</th>
+              <th class="py-3 px-3.5">Status</th>
+              <th class="py-3 px-3.5 text-center">Adults</th>
+              <th class="py-3 px-3.5 text-center">Kids</th>
+              <th class="py-3 px-3.5">Kids' Ages</th>
+              <th class="py-3 px-3.5">Notes / Dietary</th>
+              <th class="py-3 px-3.5">Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="guest-list-tbody" class="divide-y divide-amber-400/15 text-stone-200">
+            <tr>
+              <td colspan="8" class="py-8 text-center text-stone-500 italic">
+                Loading live RSVPs...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, addDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    /**
+     * ====================================================================
+     * 1. AMBIENT GOLD GLITTER PARTICLE ENGINE
+     * ====================================================================
+     */
+    (function initGlitterCanvas() {
+      const canvas = document.getElementById('glitter-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height, particles = [];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particleCount = Math.min(95, Math.floor((width * height) / 14000));
+      const goldColors = ['#fcf6ba', '#d4af37', '#f59e0b', '#fef08a', '#b45309'];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.1 + 0.6,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: -Math.random() * 0.35 - 0.08,
+          alpha: Math.random(),
+          alphaSpeed: (Math.random() * 0.018) + 0.005,
+          color: goldColors[Math.floor(Math.random() * goldColors.length)]
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha += p.alphaSpeed;
+
+          if (p.alpha >= 1 || p.alpha <= 0.15) p.alphaSpeed *= -1;
+          if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
+
+          ctx.save();
+          ctx.globalAlpha = Math.max(0.1, Math.min(1, p.alpha));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#fcf6ba';
+          ctx.fill();
+          ctx.restore();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /**
+     * ====================================================================
+     * 2. LIVE COUNTDOWN TIMER & .ICS CALENDAR DOWNLOAD
+     * ====================================================================
+     */
+    const EVENT_TIMESTAMP = new Date('2027-01-09T18:00:00Z').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = Math.max(0, EVENT_TIMESTAMP - now);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Download .ics calendar file for Apple/Outlook/Android calendars
+    document.querySelectorAll('.download-ics-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const icsContent = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Prerna 40th Birthday//RSVP//EN',
+          'BEGIN:VEVENT',
+          'UID:prerna-40th-20270109@fortyandfabulous',
+          'DTSTAMP:20261125T170000Z',
+          'DTSTART:20270109T180000Z',
+          'DTEND:20270109T235900Z',
+          "SUMMARY:Prerna's 40th Birthday — Forty & Fabulous",
+          'DESCRIPTION:Ladies & Gentlemen, dress to dazzle! Venue details to follow.',
+          'LOCATION:Venue details to follow',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Prernas_40th_Birthday.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+    });
+
+    /**
+     * ====================================================================
+     * 3. THEATRICAL VELVET CURTAINS INTERACTION
+     * ====================================================================
+     */
+    const curtainStage = document.getElementById('curtain-stage');
+    document.getElementById('open-curtain-btn').addEventListener('click', () => {
+      curtainStage.classList.add('opened');
+    });
+    document.getElementById('replay-curtain-btn').addEventListener('click', () => {
+      curtainStage.classList.remove('opened');
+    });
+
+    /**
+     * ====================================================================
+     * 4. FIREBASE FIRESTORE SETUP & AUTHENTICATION
+     * ====================================================================
+     */
+    let db = null;
+    let auth = null;
+    let currentUser = null;
+    let allRsvps = [];
+    let webhookUrl = '';
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'prerna-40th-birthday';
+
+    async function initBackend() {
+      try {
+        if (typeof __firebase_config !== 'undefined') {
+          const firebaseConfig = JSON.parse(__firebase_config);
+          const app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } else {
+            await signInAnonymously(auth);
+          }
+
+          onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            if (currentUser) {
+              subscribeToRsvps();
+              subscribeToSettings();
+            }
+          });
+        }
+      } catch (err) {
+        console.error('Backend initialization notice:', err);
+      }
+    }
+
+    function subscribeToRsvps() {
+      if (!db || !currentUser) return;
+      const rsvpCol = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+      onSnapshot(
+        rsvpCol,
+        (snapshot) => {
+          const items = [];
+          snapshot.forEach((docSnap) => {
+            items.push({ id: docSnap.id, ...docSnap.data() });
+          });
+          items.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
+          allRsvps = items;
+          renderGuestDashboard();
+        },
+        (error) => {
+          console.error('Error listening to RSVPs:', error);
+        }
+      );
+    }
+
+    function subscribeToSettings() {
+      if (!db || !currentUser) return;
+      const settingsDoc = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'webhook');
+      onSnapshot(
+        settingsDoc,
+        (docSnap) => {
+          if (docSnap.exists() && docSnap.data().url) {
+            webhookUrl = docSnap.data().url;
+            document.getElementById('webhook-url-input').value = webhookUrl;
+            const statusEl = document.getElementById('webhook-status-text');
+            statusEl.textContent = "Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet & Gmail.";
+            statusEl.classList.remove('hidden');
+          }
+        },
+        (err) => {
+          console.error('Settings sync error:', err);
+        }
+      );
+    }
+
+    initBackend();
+
+    /**
+     * ====================================================================
+     * 5. DYNAMIC RSVP FORM & KIDS AGE FIELDS
+     * ====================================================================
+     */
+    const rsvpForm = document.getElementById('rsvp-form');
+    const guestNameInput = document.getElementById('guest-name');
+    const guestPhoneInput = document.getElementById('guest-phone');
+    const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+    const guestDetailsWrapper = document.getElementById('guest-details-wrapper');
+    const numAdultsInput = document.getElementById('num-adults');
+    const numKidsInput = document.getElementById('num-kids');
+    const kidsAgesContainer = document.getElementById('kids-ages-container');
+    const kidsAgeInputs = document.getElementById('kids-age-inputs');
+    const guestWishesInput = document.getElementById('guest-wishes');
+    const statusBanner = document.getElementById('status-banner');
+    const confirmRsvpBtn = document.getElementById('confirm-rsvp-btn');
+    const confirmBtnText = document.getElementById('confirm-btn-text');
+    const confirmationCard = document.getElementById('rsvp-confirmation-card');
+
+    function showBanner(message, type = 'error') {
+      statusBanner.classList.remove(
+        'hidden',
+        'border-rose-400/60', 'bg-rose-950/60', 'text-rose-200',
+        'border-emerald-400/60', 'bg-emerald-950/60', 'text-emerald-200'
+      );
+      if (type === 'error') {
+        statusBanner.classList.add('border-rose-400/60', 'bg-rose-950/60', 'text-rose-200');
+      } else {
+        statusBanner.classList.add('border-emerald-400/60', 'bg-emerald-950/60', 'text-emerald-200');
+      }
+      statusBanner.innerHTML = message;
+      statusBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideBanner() {
+      statusBanner.classList.add('hidden');
+    }
+
+    attendanceRadios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        hideBanner();
+        if (radio.value === 'Joyfully Accepts' && radio.checked) {
+          guestDetailsWrapper.classList.remove('hidden');
+        } else if (radio.value === 'Regretfully Declines' && radio.checked) {
+          guestDetailsWrapper.classList.add('hidden');
+        }
+      });
+    });
+
+    function renderKidsAgeFields() {
+      const count = Math.max(0, Math.min(15, parseInt(numKidsInput.value, 10) || 0));
+      numKidsInput.value = count;
+
+      if (count === 0) {
+        kidsAgesContainer.classList.add('hidden');
+        kidsAgeInputs.innerHTML = '';
+        return;
+      }
+
+      const existingValues = Array.from(kidsAgeInputs.querySelectorAll('input')).map(inp => inp.value);
+      kidsAgesContainer.classList.remove('hidden');
+      kidsAgeInputs.innerHTML = '';
+
+      for (let i = 0; i < count; i++) {
+        const wrapper = document.createElement('div');
+        const val = existingValues[i] !== undefined ? existingValues[i] : '';
+        wrapper.innerHTML = `
+          <label class="block text-[11px] text-amber-200/80 mb-1">Child ${i + 1} Age (yrs)</label>
+          <input
+            type="text"
+            inputmode="numeric"
+            data-kid-index="${i + 1}"
+            value="${val.replace(/"/g, '&quot;')}"
+            placeholder="e.g., 5"
+            class="kid-age-field luxury-input w-full rounded-xl px-3 py-2 text-sm placeholder-stone-500"
+          />
+        `;
+        kidsAgeInputs.appendChild(wrapper);
+      }
+    }
+
+    numKidsInput.addEventListener('input', renderKidsAgeFields);
+    numKidsInput.addEventListener('change', renderKidsAgeFields);
+
+    document.querySelectorAll('.stepper-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        const min = parseInt(target.min, 10);
+        const max = parseInt(target.max, 10);
+        let val = parseInt(target.value, 10) || min;
+
+        if (btn.dataset.action === 'inc' && val < max) val++;
+        if (btn.dataset.action === 'dec' && val > min) val--;
+
+        target.value = val;
+        if (target.id === 'num-kids') {
+          renderKidsAgeFields();
+        }
+      });
+    });
+
+    /**
+     * ====================================================================
+     * 6. SUBMIT RSVP -> FIRESTORE + SILENT SHEETS & GMAIL WEBHOOK
+     * ====================================================================
+     */
+    rsvpForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideBanner();
+
+      const name = guestNameInput.value.trim();
+      if (!name) {
+        showBanner('<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Please enter your <strong>Full Name</strong>.');
+        guestNameInput.focus();
+        return;
+      }
+
+      const phone = guestPhoneInput.value.trim();
+      if (!phone || phone.replace(/\D/g, '').length < 7) {
+        showBanner('<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Please enter a valid <strong>WhatsApp / Mobile Number</strong>.');
+        guestPhoneInput.focus();
+        return;
+      }
+
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const isAttending = attendance === 'Joyfully Accepts';
+      const adults = isAttending ? Math.max(1, parseInt(numAdultsInput.value, 10) || 1) : 0;
+      const kids = isAttending ? Math.max(0, parseInt(numKidsInput.value, 10) || 0) : 0;
+
+      let kidsAges = [];
+      if (isAttending && kids > 0) {
+        const ageFields = Array.from(document.querySelectorAll('.kid-age-field'));
+        for (let i = 0; i < ageFields.length; i++) {
+          const ageVal = ageFields[i].value.trim();
+          if (!ageVal) {
+            showBanner(`<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Please enter the age for <strong>Child ${i + 1}</strong>.`);
+            ageFields[i].focus();
+            return;
+          }
+          kidsAges.push(ageVal);
+        }
+      }
+
+      const wishes = guestWishesInput.value.trim();
+      const now = new Date();
+      const payload = {
+        name,
+        phone,
+        attendance,
+        isAttending,
+        adults,
+        kids,
+        kidsAges: kidsAges.join(', '),
+        wishes,
+        submittedAt: now.toLocaleString('en-IE', { dateStyle: 'medium', timeStyle: 'short' }),
+        createdAtMs: now.getTime()
+      };
+
+      confirmRsvpBtn.disabled = true;
+      confirmBtnText.textContent = 'Confirming...';
+
+      try {
+        if (db && currentUser) {
+          const rsvpCol = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+          await addDoc(rsvpCol, payload);
+        }
+
+        // Silent background push to 'Prerna Brithday' Google Sheet & Gmail webhook if configured
+        if (webhookUrl) {
+          fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).catch(() => {});
+        }
+
+        // Populate VIP Confirmation Card (Zero access to other guests)
+        document.getElementById('conf-guest-name').textContent = name;
+        document.getElementById('conf-subtitle').textContent = isAttending
+          ? `We can't wait to celebrate with you on Saturday, 9th January 2027! Venue details will be sent to ${phone}.`
+          : 'Thank you for letting us know! You will be missed at the celebration.';
+
+        const summaryHtml = [
+          `<div><span class="text-amber-300 font-semibold">Name:</span> ${escapeHtml(name)}</div>`,
+          `<div><span class="text-amber-300 font-semibold">Phone:</span> ${escapeHtml(phone)}</div>`,
+          `<div><span class="text-amber-300 font-semibold">Status:</span> ${escapeHtml(attendance)}</div>`
+        ];
+        if (isAttending) {
+          summaryHtml.push(`<div><span class="text-amber-300 font-semibold">Adults:</span> ${adults} &nbsp;|&nbsp; <span class="text-amber-300 font-semibold">Kids:</span> ${kids}</div>`);
+          if (kids > 0) {
+            summaryHtml.push(`<div><span class="text-amber-300 font-semibold">Kids' Ages:</span> ${escapeHtml(kidsAges.join(', '))}</div>`);
+          }
+        }
+        if (wishes) {
+          summaryHtml.push(`<div><span class="text-amber-300 font-semibold">Note:</span> "${escapeHtml(wishes)}"</div>`);
+        }
+
+        document.getElementById('conf-summary-box').innerHTML = summaryHtml.join('');
+        rsvpForm.classList.add('hidden');
+        confirmationCard.classList.remove('hidden');
+        confirmationCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (error) {
+        console.error('RSVP save error:', error);
+        showBanner('<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Something went wrong saving your RSVP. Please try again.');
+      } finally {
+        confirmRsvpBtn.disabled = false;
+        confirmBtnText.textContent = 'Confirm RSVP';
+      }
+    });
+
+    document.getElementById('edit-rsvp-btn').addEventListener('click', () => {
+      confirmationCard.classList.add('hidden');
+      rsvpForm.classList.remove('hidden');
+      hideBanner();
+    });
+
+    /**
+     * ====================================================================
+     * 7. PRIVATE HOST-ONLY ACCESS GATE (URL ?host=prerna40 OR SECRET HEART)
+     * ====================================================================
+     */
+    const HOST_PINS = ['1987', '4040'];
+    let isHostUnlocked = false;
+
+    const hostDashboardModal = document.getElementById('host-dashboard-modal');
+    const hostPinModal = document.getElementById('host-pin-modal');
+    const hostPinInput = document.getElementById('host-pin-input');
+    const hostPinError = document.getElementById('host-pin-error');
+    const hostModePill = document.getElementById('host-mode-pill');
+
+    function openHostDashboard() {
+      isHostUnlocked = true;
+      hostPinModal.classList.add('hidden');
+      hostDashboardModal.classList.remove('hidden');
+      hostModePill.classList.remove('hidden');
+      curtainStage.classList.add('opened');
+      renderGuestDashboard();
+    }
+
+    // Check URL parameter ?host=prerna40 on load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('host') === 'prerna40') {
+      openHostDashboard();
+    }
+
+    // Secret trigger: Triple-click or 2-second press on the gold heart divider
+    const secretHeart = document.getElementById('secret-host-heart');
+    let heartClickCount = 0;
+    let heartClickTimer = null;
+    let heartHoldTimer = null;
+
+    function triggerHostGate() {
+      if (isHostUnlocked) {
+        hostDashboardModal.classList.remove('hidden');
+        return;
+      }
+      hostPinError.classList.add('hidden');
+      hostPinInput.value = '';
+      hostPinModal.classList.remove('hidden');
+      setTimeout(() => hostPinInput.focus(), 100);
+    }
+
+    secretHeart.addEventListener('click', () => {
+      heartClickCount++;
+      clearTimeout(heartClickTimer);
+      if (heartClickCount >= 3) {
+        heartClickCount = 0;
+        triggerHostGate();
+      } else {
+        heartClickTimer = setTimeout(() => { heartClickCount = 0; }, 700);
+      }
+    });
+
+    secretHeart.addEventListener('pointerdown', () => {
+      heartHoldTimer = setTimeout(() => {
+        triggerHostGate();
+      }, 2000);
+    });
+    secretHeart.addEventListener('pointerup', () => clearTimeout(heartHoldTimer));
+    secretHeart.addEventListener('pointerleave', () => clearTimeout(heartHoldTimer));
+
+    // Host Mode Pill click re-opens dashboard
+    hostModePill.addEventListener('click', () => {
+      hostDashboardModal.classList.remove('hidden');
+    });
+
+    // PIN Modal Actions
+    document.getElementById('cancel-pin-btn').addEventListener('click', () => {
+      hostPinModal.classList.add('hidden');
+    });
+
+    function verifyHostPin() {
+      if (HOST_PINS.includes(hostPinInput.value.trim())) {
+        openHostDashboard();
+      } else {
+        hostPinError.classList.remove('hidden');
+        hostPinInput.value = '';
+        hostPinInput.focus();
+      }
+    }
+
+    document.getElementById('submit-pin-btn').addEventListener('click', verifyHostPin);
+    hostPinInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') verifyHostPin();
+    });
+
+    document.getElementById('close-host-dashboard-btn').addEventListener('click', () => {
+      hostDashboardModal.classList.add('hidden');
+    });
+
+    // Copy Clean Guest URL (strips ?host=prerna40 so guests never see host mode)
+    document.getElementById('copy-guest-link-btn').addEventListener('click', () => {
+      const cleanUrl = window.location.origin + window.location.pathname;
+      copyTextToClipboard(cleanUrl);
+      const btn = document.getElementById('copy-guest-link-btn');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i><span>Guest Link Copied!</span>';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-share-nodes"></i><span>Copy Clean Guest Link</span>';
+      }, 2500);
+    });
+
+    /**
+     * ====================================================================
+     * 8. RENDER HOST DASHBOARD & 'PRERNA BRITHDAY' GOOGLE SHEETS SYNC
+     * ====================================================================
+     */
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function copyTextToClipboard(text) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      temp.style.position = 'fixed';
+      temp.style.opacity = '0';
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(temp);
+    }
+
+    function renderGuestDashboard() {
+      let attendingCount = 0;
+      let totalAdults = 0;
+      let totalKids = 0;
+
+      allRsvps.forEach((r) => {
+        if (r.isAttending) {
+          attendingCount++;
+          totalAdults += Number(r.adults || 0);
+          totalKids += Number(r.kids || 0);
+        }
+      });
+
+      document.getElementById('stat-responses').textContent = allRsvps.length;
+      document.getElementById('stat-attending').textContent = attendingCount;
+      document.getElementById('stat-adults').textContent = totalAdults;
+      document.getElementById('stat-kids').textContent = totalKids;
+
+      const tbody = document.getElementById('guest-list-tbody');
+      if (allRsvps.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="py-8 text-center text-stone-500 italic">
+              No RSVPs received yet. Share the invitation link to start collecting responses!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = allRsvps.map((r) => {
+        const badgeClass = r.isAttending
+          ? 'bg-emerald-500/15 text-emerald-300 border-emerald-400/40'
+          : 'bg-rose-500/15 text-rose-300 border-rose-400/40';
+        return `
+          <tr class="hover:bg-amber-400/[0.03]">
+            <td class="py-3 px-3.5 font-medium text-amber-100">${escapeHtml(r.name)}</td>
+            <td class="py-3 px-3.5 text-stone-200 whitespace-nowrap">${escapeHtml(r.phone || '-')}</td>
+            <td class="py-3 px-3.5">
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] border ${badgeClass}">
+                ${escapeHtml(r.attendance)}
+              </span>
+            </td>
+            <td class="py-3 px-3.5 text-center">${r.isAttending ? r.adults : 0}</td>
+            <td class="py-3 px-3.5 text-center">${r.isAttending ? r.kids : 0}</td>
+            <td class="py-3 px-3.5 text-stone-300">${r.kids > 0 ? escapeHtml(r.kidsAges) : '-'}</td>
+            <td class="py-3 px-3.5 text-stone-400 max-w-xs">${escapeHtml(r.wishes || '-')}</td>
+            <td class="py-3 px-3.5 text-stone-500 text-xs whitespace-nowrap">${escapeHtml(r.submittedAt || '')}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Copy tab-separated rows ready to paste directly into 'Prerna Brithday' Google Sheet
+    document.getElementById('copy-sheets-btn').addEventListener('click', () => {
+      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At'];
+      const rows = allRsvps.map((r) => [
+        r.name || '',
+        r.phone || '',
+        r.attendance || '',
+        r.isAttending ? r.adults : 0,
+        r.isAttending ? r.kids : 0,
+        r.kids > 0 ? r.kidsAges : '',
+        (r.wishes || '').replace(/\n/g, ' '),
+        r.submittedAt || ''
+      ]);
+      const tsv = [headers, ...rows].map((row) => row.join('\t')).join('\n');
+      copyTextToClipboard(tsv);
+
+      const btn = document.getElementById('copy-sheets-btn');
+      const origHtml = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i><span>Copied! Paste into \'Prerna Brithday\'</span>';
+      setTimeout(() => { btn.innerHTML = origHtml; }, 2500);
+    });
+
+    // Download CSV
+    document.getElementById('download-csv-btn').addEventListener('click', () => {
+      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At'];
+      const csvEscape = (val) => `"${String(val ?? '').replace(/"/g, '""')}"`;
+      const rows = allRsvps.map((r) => [
+        r.name || '',
+        r.phone || '',
+        r.attendance || '',
+        r.isAttending ? r.adults : 0,
+        r.isAttending ? r.kids : 0,
+        r.kids > 0 ? r.kidsAges : '',
+        r.wishes || '',
+        r.submittedAt || ''
+      ]);
+      const csvContent = [headers, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Prerna_Brithday_RSVP_List.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+
+    // Toggle Google Apps Script Auto-Sync panel
+    document.getElementById('toggle-webhook-setup-btn').addEventListener('click', () => {
+      document.getElementById('webhook-setup-panel').classList.toggle('hidden');
+    });
+
+    // Copy ready-to-paste Google Apps Script tailored for 'Prerna Brithday' sheet & Gmail
+    document.getElementById('copy-apps-script-btn').addEventListener('click', () => {
+      const scriptCode = `function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('Prerna Brithday') || ss.getSheets()[0];
+  var data = JSON.parse(e.postData.contents);
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['Guest Name', 'Phone / WhatsApp', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At']);
+  }
+
+  sheet.appendRow([
+    data.name || '',
+    data.phone || '',
+    data.attendance || '',
+    data.adults || 0,
+    data.kids || 0,
+    data.kidsAges || '',
+    data.wishes || '',
+    data.submittedAt || new Date().toLocaleString()
+  ]);
+
+  var subject = "New RSVP: Prerna's 40th Birthday — " + data.name + " (" + data.attendance + ")";
+  var body = "New RSVP received for Prerna's 40th Birthday!\\n\\n"
+    + "Guest Name: " + data.name + "\\n"
+    + "Phone / WhatsApp: " + data.phone + "\\n"
+    + "Response: " + data.attendance + "\\n"
+    + "Adults: " + data.adults + "\\n"
+    + "Kids: " + data.kids + (data.kids > 0 ? " (Ages: " + data.kidsAges + ")" : "") + "\\n"
+    + "Notes / Dietary: " + (data.wishes || "None") + "\\n"
+    + "Submitted: " + data.submittedAt;
+
+  MailApp.sendEmail("singhee.shobhit@gmail.com,singhee.darsh@gmail.com", subject, body);
+
+  return ContentService.createTextOutput(JSON.stringify({ status: "ok" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}`;
+      copyTextToClipboard(scriptCode);
+      const btn = document.getElementById('copy-apps-script-btn');
+      btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Script Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fa-regular fa-copy mr-1"></i> Copy Google Apps Script';
+      }, 2500);
+    });
+
+    // Save Webhook URL
+    document.getElementById('save-webhook-btn').addEventListener('click', async () => {
+      const urlVal = document.getElementById('webhook-url-input').value.trim();
+      const statusEl = document.getElementById('webhook-status-text');
+      if (!urlVal) return;
+
+      webhookUrl = urlVal;
+      if (db && currentUser) {
+        const settingsDoc = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'webhook');
+        await setDoc(settingsDoc, { url: urlVal, updatedAt: Date.now() }, { merge: true });
+      }
+      statusEl.textContent = "Saved! Every new RSVP will auto-append to 'Prerna Brithday' & email both Gmail addresses.";
+      statusEl.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
