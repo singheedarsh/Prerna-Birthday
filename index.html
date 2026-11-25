@@ -722,15 +722,15 @@
               </div>
             </div>
 
-            <!-- 5. Dietary Requirements / Song Request / Personal Note -->
+            <!-- 5. Birthday Note for Prerna -->
             <div>
               <label for="guest-wishes" class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
-                Dietary Notes, Song Request or Wishes <span class="text-stone-500 font-sans normal-case tracking-normal">(Optional)</span>
+                Birthday Note for Prerna <span class="text-stone-500 font-sans normal-case tracking-normal">(Optional)</span>
               </label>
               <textarea
                 id="guest-wishes"
                 rows="2"
-                placeholder="Any dietary requirements, favorite dance track, or birthday wishes for Prerna..."
+                placeholder="Got a special wish, a funny memory, or a message for Prerna? Leave it here and make her 40th even more memorable! 🥂✨"
                 class="luxury-input w-full rounded-xl px-4 py-3 text-sm placeholder-stone-500 resize-none"
               ></textarea>
             </div>
@@ -947,7 +947,7 @@
           <input
             type="url"
             id="webhook-url-input"
-            value="https://script.google.com/macros/s/AKfycbxygx-mS-sIatsjQCx3QvmeKHNTOzfrYZukfQk8RYbBMhU0ZbwO2Uh6tTlA2PBxHLGwEg/exec"
+            value="https://script.google.com/macros/s/AKfycbzDuUKg-WJodv5yJavFVgxLw-18nPmsOPjLUssXzNe4Yp-MF6zyTCH1YsHqfrTKb9yJ/exec"
             placeholder="https://script.google.com/macros/s/...../exec"
             class="luxury-input flex-1 rounded-xl px-3.5 py-2.5 text-xs"
           />
@@ -969,7 +969,7 @@
               <th class="py-3 px-3.5 text-center">Adults</th>
               <th class="py-3 px-3.5 text-center">Kids</th>
               <th class="py-3 px-3.5">Kids' Ages</th>
-              <th class="py-3 px-3.5">Notes / Dietary</th>
+              <th class="py-3 px-3.5">Birthday Note</th>
               <th class="py-3 px-3.5">Submitted</th>
             </tr>
           </thead>
@@ -1127,7 +1127,7 @@
     let auth = null;
     let currentUser = null;
     let allRsvps = [];
-    const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxygx-mS-sIatsjQCx3QvmeKHNTOzfrYZukfQk8RYbBMhU0ZbwO2Uh6tTlA2PBxHLGwEg/exec';
+    const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzDuUKg-WJodv5yJavFVgxLw-18nPmsOPjLUssXzNe4Yp-MF6zyTCH1Ydone is that it or do i need to update smth elsesHqfrTKb9yJ/exec';
     let webhookUrl = DEFAULT_WEBHOOK_URL;
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'prerna-40th-birthday';
 
@@ -1677,7 +1677,7 @@
 
     // Copy tab-separated rows ready to paste directly into 'Prerna Brithday' Google Sheet
     document.getElementById('copy-sheets-btn').addEventListener('click', () => {
-      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At'];
+      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Birthday Note', 'Submitted At'];
       const rows = allRsvps.map((r) => [
         r.name || '',
         r.phone || '',
@@ -1699,7 +1699,7 @@
 
     // Download CSV
     document.getElementById('download-csv-btn').addEventListener('click', () => {
-      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At'];
+      const headers = ['Guest Name', 'Phone Number', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Birthday Note', 'Submitted At'];
       const csvEscape = (val) => `"${String(val ?? '').replace(/"/g, '""')}"`;
       const rows = allRsvps.map((r) => [
         r.name || '',
@@ -1750,7 +1750,7 @@ function doPost(e) {
       'Adults',
       'Kids',
       'Kid Ages',
-      'Notes / Dietary'
+      'Birthday Note'
     ];
 
     if (sheet.getLastRow() === 0) {
@@ -1789,7 +1789,7 @@ function doPost(e) {
       'Adults: ' + adults,
       'Kids: ' + kids,
       'Kid Ages: ' + (kidAges || 'None'),
-      'Notes / Dietary: ' + (notes || 'None'),
+      'Birthday Note: ' + (notes || 'None'),
       'Submitted: ' + timestamp,
       '',
       'Sheet: https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID + '/edit'
