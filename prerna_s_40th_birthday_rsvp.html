@@ -938,6 +938,7 @@
           <input
             type="url"
             id="webhook-url-input"
+            value="https://script.google.com/macros/s/AKfycbxygx-mS-sIatsjQCx3QvmeKHNTOzfrYZukfQk8RYbBMhU0ZbwO2Uh6tTlA2PBxHLGwEg/exec"
             placeholder="https://script.google.com/macros/s/...../exec"
             class="luxury-input flex-1 rounded-xl px-3.5 py-2.5 text-xs"
           />
@@ -945,6 +946,8 @@
             Save Auto-Sync
           </button>
         </div>
+        <p id="webhook-status-text" class="text-[11px] text-emerald-400">Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet &amp; Gmail.</p>
+      </div>
         <p id="webhook-status-text" class="text-[11px] text-emerald-400 hidden"></p>
       </div>
 
@@ -1117,8 +1120,20 @@
     let auth = null;
     let currentUser = null;
     let allRsvps = [];
-    let webhookUrl = '';
+    const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxygx-mS-sIatsjQCx3QvmeKHNTOzfrYZukfQk8RYbBMhU0ZbwO2Uh6tTlA2PBxHLGwEg/exec';
+    let webhookUrl = DEFAULT_WEBHOOK_URL;
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'prerna-40th-birthday';
+
+    // Ensure webhook input and status reflect the pre-baked URL immediately on load
+    const webhookInputEl = document.getElementById('webhook-url-input');
+    const webhookStatusEl = document.getElementById('webhook-status-text');
+    if (webhookInputEl) {
+      webhookInputEl.value = webhookUrl;
+    }
+    if (webhookStatusEl) {
+      webhookStatusEl.textContent = "Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet & Gmail.";
+      webhookStatusEl.classList.remove('hidden');
+    }
 
     async function initBackend() {
       try {
@@ -1173,13 +1188,14 @@
       onSnapshot(
         settingsDoc,
         (docSnap) => {
-          if (docSnap.exists() && docSnap.data().url) {
-            webhookUrl = docSnap.data().url;
-            document.getElementById('webhook-url-input').value = webhookUrl;
-            const statusEl = document.getElementById('webhook-status-text');
-            statusEl.textContent = "Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet & Gmail.";
-            statusEl.classList.remove('hidden');
-          }
+          const savedUrl = (docSnap.exists() && docSnap.data().url && docSnap.data().url.trim())
+            ? docSnap.data().url.trim()
+            : DEFAULT_WEBHOOK_URL;
+          webhookUrl = savedUrl;
+          document.getElementById('webhook-url-input').value = webhookUrl;
+          const statusEl = document.getElementById('webhook-status-text');
+          statusEl.textContent = "Auto-Sync active: RSVPs are sent to 'Prerna Brithday' Sheet & Gmail.";
+          statusEl.classList.remove('hidden');
         },
         (err) => {
           console.error('Settings sync error:', err);
@@ -1342,29 +1358,29 @@
         isAttending,
         adults,
         kids,
-        kidsAges: kidsAges.join(', '),
-        wishes,
-        submittedAt: now.toLocaleString('en-IE', { dateStyle: 'medium', timeStyle: 'short' }),
-        createdAtMs: now.getTime()
-      };
+        // Silent background push to 'Prerna Brithday' Google Sheet & Gmail webhook
+        const targetWebhookUrl = (webhookUrl && webhookUrl.trim()) || DEFAULT_WEBHOOK_URL;
+        const webhookPayload = {
+          ...payload,
+          timestamp: now.toISOString(),
+          attending: attendance,
+          kidAges: kidsAges
+        };
 
-      confirmRsvpBtn.disabled = true;
-      confirmBtnText.textContent = 'Confirming...';
-
-      try {
-        if (db && currentUser) {
-          const rsvpCol = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
-          await addDoc(rsvpCol, payload);
-        }
-
-        // Silent background push to 'Prerna Brithday' Google Sheet & Gmail webhook if configured
-        if (webhookUrl) {
-          fetch(webhookUrl, {
+        try {
+          await fetch(targetWebhookUrl, {
             method: 'POST',
             mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          }).catch(() => {});
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(webhookPayload),
+            keepalive: true
+          });
+        } catch (webhookErr) {
+          // Fallback with sendBeacon if fetch is interrupted during navigation
+          if (navigator.sendBeacon) {
+            const blob = new Blob([JSON.stringify(webhookPayload)], { type: 'text/plain;charset=utf-8' });
+            navigator.sendBeacon(targetWebhookUrl, blob);
+          }
         }
 
         // Populate VIP Confirmation Card (Zero access to other guests)
@@ -1692,11 +1708,13 @@
 
     // Save Webhook URL
     document.getElementById('save-webhook-btn').addEventListener('click', async () => {
-      const urlVal = document.getElementById('webhook-url-input').value.trim();
+      const rawUrl = document.getElementById('webhook-url-input').value.trim();
+      const urlVal = rawUrl || DEFAULT_WEBHOOK_URL;
       const statusEl = document.getElementById('webhook-status-text');
-      if (!urlVal) return;
 
       webhookUrl = urlVal;
+      document.getElementById('webhook-url-input').value = urlVal;
+
       if (db && currentUser) {
         const settingsDoc = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'webhook');
         await setDoc(settingsDoc, { url: urlVal, updatedAt: Date.now() }, { merge: true });
