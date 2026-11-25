@@ -440,7 +440,7 @@
                 <img
                   src="prerna-portrait.jpg"
                   alt="Prerna — Celebrating 40 Years"
-                  data-fallback="WhatsApp Image 2026-11-25 at 5.07.48 PM (2).jpeg"
+                  data-fallback="WhatsApp Image 2026-11-25 at 5.07.48 PM (3).jpeg"
                   onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}else{this.onerror=null;this.src='https://placehold.co/300x300/18181b/f5d061?text=Prerna+40';}"
                   style="object-position: 38% 12%;"
                   class="w-full h-full object-cover"
@@ -725,12 +725,12 @@
             <!-- 5. Dietary Requirements / Song Request / Personal Note -->
             <div>
               <label for="guest-wishes" class="block font-cinzel text-xs tracking-[0.18em] text-amber-200 uppercase mb-2">
-                Birthday Note for the Birthday Girl <span class="text-stone-500 font-sans normal-case tracking-normal">(Optional)</span>
+                Dietary Notes, Song Request or Wishes <span class="text-stone-500 font-sans normal-case tracking-normal">(Optional)</span>
               </label>
               <textarea
                 id="guest-wishes"
                 rows="2"
-                placeholder=""
+                placeholder="Any dietary requirements, favorite dance track, or birthday wishes for Prerna..."
                 class="luxury-input w-full rounded-xl px-4 py-3 text-sm placeholder-stone-500 resize-none"
               ></textarea>
             </div>
@@ -1730,40 +1730,85 @@
 
     // Copy ready-to-paste Google Apps Script tailored for 'Prerna Brithday' sheet & Gmail
     document.getElementById('copy-apps-script-btn').addEventListener('click', () => {
-      const scriptCode = `function doPost(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName('Prerna Brithday') || ss.getSheets()[0];
-  var data = JSON.parse(e.postData.contents);
+      const scriptCode = `const SPREADSHEET_ID = '1EV3Igh5wd9Q5MC7vTWAx6TtXkoYXjfegVJSa3odwYaE';
+const SHEET_NAME = 'Sheet1';
+const NOTIFY_EMAILS = ['singhee.shobhit@gmail.com', 'singhee.darsh@gmail.com'];
 
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Guest Name', 'Phone / WhatsApp', 'Status', 'Adults', 'Kids', 'Kids Ages', 'Notes / Dietary', 'Submitted At']);
+function doPost(e) {
+  try {
+    const raw = (e && e.postData && e.postData.contents) ? e.postData.contents : '{}';
+    const data = JSON.parse(raw);
+
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+
+    const headers = [
+      'Timestamp',
+      'Guest Name',
+      'Phone / WhatsApp',
+      'Attending',
+      'Adults',
+      'Kids',
+      'Kid Ages',
+      'Notes / Dietary'
+    ];
+
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(headers);
+    }
+
+    const timestamp = data.submittedAt || data.timestamp || new Date().toISOString();
+    const guestName = data.name || '';
+    const phone = data.phone || '';
+    const attending = data.attendance || data.attending || '';
+    const adults = Number(data.adults || 0);
+    const kids = Number(data.kids || 0);
+    const kidAges = Array.isArray(data.kidAges)
+      ? data.kidAges.join(', ')
+      : (data.kidsAges || data.kidAges || '');
+    const notes = data.wishes || data.notes || '';
+
+    sheet.appendRow([
+      timestamp,
+      guestName,
+      phone,
+      attending,
+      adults,
+      kids,
+      kidAges,
+      notes
+    ]);
+
+    const subject = 'New RSVP: ' + (guestName || 'Guest') + ' (' + (attending || 'Response') + ') — Prerna\\'s 40th';
+    const body = [
+      'New RSVP received for Prerna\\'s 40th Birthday:',
+      '',
+      'Name: ' + guestName,
+      'Phone / WhatsApp: ' + phone,
+      'Attending: ' + attending,
+      'Adults: ' + adults,
+      'Kids: ' + kids,
+      'Kid Ages: ' + (kidAges || 'None'),
+      'Notes / Dietary: ' + (notes || 'None'),
+      'Submitted: ' + timestamp,
+      '',
+      'Sheet: https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID + '/edit'
+    ].join('\\n');
+
+    MailApp.sendEmail({
+      to: NOTIFY_EMAILS.join(','),
+      subject: subject,
+      body: body
+    });
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'ok' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
-
-  sheet.appendRow([
-    data.name || '',
-    data.phone || '',
-    data.attendance || '',
-    data.adults || 0,
-    data.kids || 0,
-    data.kidsAges || '',
-    data.wishes || '',
-    data.submittedAt || new Date().toLocaleString()
-  ]);
-
-  var subject = "New RSVP: Prerna's 40th Birthday — " + data.name + " (" + data.attendance + ")";
-  var body = "New RSVP received for Prerna's 40th Birthday!\\n\\n"
-    + "Guest Name: " + data.name + "\\n"
-    + "Phone / WhatsApp: " + data.phone + "\\n"
-    + "Response: " + data.attendance + "\\n"
-    + "Adults: " + data.adults + "\\n"
-    + "Kids: " + data.kids + (data.kids > 0 ? " (Ages: " + data.kidsAges + ")" : "") + "\\n"
-    + "Notes / Dietary: " + (data.wishes || "None") + "\\n"
-    + "Submitted: " + data.submittedAt;
-
-  MailApp.sendEmail("singhee.shobhit@gmail.com,singhee.darsh@gmail.com", subject, body);
-
-  return ContentService.createTextOutput(JSON.stringify({ status: "ok" }))
-    .setMimeType(ContentService.MimeType.JSON);
 }`;
       copyTextToClipboard(scriptCode);
       const btn = document.getElementById('copy-apps-script-btn');
